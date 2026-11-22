@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Tiket Pertandingan - UNINDRA</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			padding: 28px 16px;
+			color: #171717;
+			background: #f4f6f8;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+		}
+		.page {
+			width: min(760px, 100%);
+			margin: 0 auto;
+			padding: 24px 30px 30px;
+			background: #fff;
+			border: 1px solid #d5d9de;
+			box-shadow: 0 4px 18px #172b4d12;
+		}
+		.page-header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 22px;
+			min-height: 120px;
+			text-align: center;
+		}
+
+		.logo {
+			width: 112px;
+			height: 100px;
+			object-fit: contain;
+		}
+
+		.university {
+			margin: 0 0 7px;
+			color: #174b70;
+			font-size: clamp(16px, 3vw, 21px);
+			font-weight: 700;
+		}
+
+		.address {
+			margin: 0 0 12px;
+			font-size: 12px;
+		}
+
+		.event-title {
+			margin: 0;
+			font-size: 17px;
+			font-weight: 500;
+		}
+
+		hr {
+			margin: 12px 0 24px;
+			border: 0;
+			border-top: 2px solid #777;
+		}
+
+		h1, h2 { text-align: center; }
+		h1 { margin: 0 0 12px; font-size: 18px; }
+		h2 { margin: 0 0 20px; font-size: 16px; }
+		.ticket-form { width: min(460px, 100%); margin: 0 auto 22px; }
+		.form-row {
+			display: grid;
+			grid-template-columns: 132px 12px minmax(0, 1fr);
+			gap: 7px;
+			align-items: start;
+			margin: 9px 0;
+		}
+
+		.form-row label, .field-label { padding-top: 5px; }
+		input[type="text"], select, textarea {
+			width: 100%;
+			min-height: 28px;
+			padding: 5px 7px;
+			border: 1px solid #aeb5bd;
+			border-radius: 3px;
+			font: inherit;
+		}
+		textarea {
+			min-height: 78px;
+			resize: vertical;
+		}
+
+		.radio-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			padding-top: 4px;
+		}
+
+		.radio-group label {
+			padding: 0;
+			white-space: nowrap;
+		}
+
+		.actions {
+			margin: 12px 0 0 151px;
+			display: flex;
+			gap: 7px;
+		}
+
+		button {
+			padding: 5px 12px;
+			border: 1px solid #777;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+		.submit {
+			color: white;
+			background: #1684c7;
+			border-color: #0873b1;
+		}
+
+		.schedule-title {
+			margin: 0;
+			padding: 7px;
+			color: #fff;
+			background: #1299e5;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.table-wrap { overflow-x: auto; }
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 13px;
+		}
+
+		th, td {
+			padding: 7px 8px;
+			border: 1px solid #70777d;
+			text-align: left;
+		}
+
+		th {
+			color: #fff;
+			background: #168fda;
+			text-align: center;
+		}
+		@media (max-width: 520px) {
+			body { padding: 12px 8px; }
+			.page { padding: 18px 14px; }
+			.page-header { flex-direction: column; gap: 8px; padding-bottom: 10px; }
+			.logo { height: 82px; }
+			.form-row { grid-template-columns: 105px 8px minmax(0, 1fr); gap: 4px; }
+			.actions { margin-left: 117px; }
+			th, td { padding: 6px; }
+		}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<header class="page-header">
+			<!-- Logo kampus disimpan di folder assets. -->
+			<img class="logo" src="assets/logounindra.png" alt="Logo Universitas Indraprasta PGRI">
+			<div>
+				<p class="university">UNIVERSITAS INDRAPRASTA PGRI</p>
+				<p class="address">Jl. Nangka No.58 Tanjung Barat - Jaksel</p>
+			</div>
+		</header>
+		<hr>
+
+		<!-- Form untuk mengisi data tiket pertandingan. -->
+		<section aria-labelledby="form-title">
+			<h1 id="form-title">FORM TIKET PERTANDINGAN</h1>
+			<h2>PIALA BERGILIR TAHUN 2026</h2>
+			<form class="ticket-form">
+				<div class="form-row">
+					<label for="kode">Kode Tiket</label><span>:</span>
+					<input id="kode" name="kode" type="text">
+				</div>
+				<div class="form-row">
+					<label for="pertandingan">Pertandingan</label><span>:</span>
+					<select id="pertandingan" name="pertandingan">
+						<option>KAMPUS A Vs KAMPUS B</option>
+						<option>KAMPUS C Vs KAMPUS D</option>
+					</select>
+				</div>
+				<div class="form-row">
+					<label for="tempat">Tempat Pertandingan</label><span>:</span>
+					<textarea id="tempat" name="tempat"></textarea>
+				</div>
+				<div class="form-row">
+					<span class="field-label">Jenis Tiket</span><span>:</span>
+					<div class="radio-group">
+						<label><input type="radio" name="jenis" value="tribune"> Tribune</label>
+						<label><input type="radio" name="jenis" value="vip"> VIP</label>
+						<label><input type="radio" name="jenis" value="vvip"> VVIP</label>
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="telp">TELP</label><span>:</span>
+					<input id="telp" name="telp" type="text" inputmode="tel">
+				</div>
+				<div class="actions">
+					<button class="submit" type="submit">Submit</button>
+					<button type="reset">Batal</button>
+				</div>
+			</form>
+		</section>
+
+		<!-- Tabel berisi contoh jadwal pertandingan. -->
+		<section aria-labelledby="jadwal-title">
+			<p class="schedule-title" id="jadwal-title">Jadwal Pertandingan</p>
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr><th>Kode Tiket</th><th>Pertandingan</th><th>Tempat</th><th>Jenis Tiket</th><th>TELP</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>65465</td><td>Kampus A Vs Kampus B</td><td>JL. SATU</td><td>VIP</td><td>08546465465475</td></tr>
+						<tr><td>4435</td><td>Kampus C Vs Kampus D</td><td>JL DUA</td><td>TRIBUNE</td><td>08544353534545</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
